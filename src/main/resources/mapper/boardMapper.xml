@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ani.dao.IF_memberBoardDao">
+
+	<!-- insert member_board -->
+	<insert id="insertBoard" parameterType="com.ani.vo.MemberBoardVO">
+		insert into member_board values (board_no_seq.nextval,#{board_title},#{board_member_nickname},#{board_comment},default,default)
+	</insert>
+	
+	<!-- insert member_board_file -->
+	<insert id="insertFile" parameterType="String">
+		insert into member_board_file values ((select max(board_no) from member_board),#{file})
+	</insert>
+	
+	<!-- selectAll member_board -->
+	<select id="selectAllMemberBoard" resultType="com.ani.vo.MemberBoardVO">
+		select t1.* from (select t2.*,rownum as rnum from (select * from member_board order by board_no desc) t2) t1 
+		where rnum between #{startNo} and #{endNo}
+	</select>
+	
+	<!-- selectCount member_board -->
+	<select id="selectCountMemberBoard" resultType="Integer">
+		select count(*) from member_board
+	</select>
+	
+	<!-- selectOne member_board -->
+	<select id="selectOneMemberBoard" resultType="com.ani.vo.MemberBoardVO">
+		select * from member_board where board_no=#{viewNum}
+	</select>
+	
+	<!-- selectFiles member_board_file -->
+	<select id="selectOneMemberFiles" resultType="String">
+		select board_file from member_board_file where board_no=#{viewNum}
+	</select>
+	
+	<!-- updateCnt member_board -->
+	<update id="updateCnt">
+		update member_board set board_cnt=board_cnt+1 where board_no=#{viewNum}
+	</update>
+	
+	<!-- deleteBoard member_board -->
+	<delete id="deleteBoard">
+		delete from member_board where board_no = #{boardNo}
+	</delete>
+	
+	<!-- updateBoard member_board -->
+	<update id="updateBoard" parameterType="com.ani.vo.MemberBoardVO">
+		update member_board set board_title=#{board_title},board_comment=#{board_comment},board_date=default where board_no=#{board_no}
+	</update>
+	
+	<!-- selectMember member_board -->
+	<select id="selectMemberBoard" parameterType="hashmap" resultType="com.ani.vo.MemberBoardVO">
+		select t1.* from (select t2.*,rownum as rnum from (select * from member_board where board_member_nickname = #{memberNick} order by board_no desc) t2) t1 
+		where rnum between #{startNo} and #{endNo} 
+	</select>
+	
+	<!-- selectCountMember member_board -->
+	<select id="selectCountMember" resultType="Integer">
+		select count(*) from member_board where board_member_nickname = #{memberNickname}
+	</select>
+	
+	<!-- selectTitle member_board -->
+	<!--  
+	<select id="selectTitle" resultType="com.ani.vo.MemberBoardVO">
+		select t1.* from (select t2.*,rownum as rnum from (select * from member_board where board_member_nickname = #{memberNick} order by board_no desc) t2) t1 
+		where rnum between #{startNo} and #{endNo} and board_title like '%'||#{boardTitle}||'%'
+	</select>
+	-->
+	<select id="selectTitle" resultType="com.ani.vo.MemberBoardVO">
+		select * from member_board where board_title like '%'||#{boardTitle}||'%' order by board_no desc
+	</select>
+	
+	<!-- selectCountTitle member_board -->
+	<select id="selectCountTitle" resultType="Integer">
+		select count(*) from member_board where board_title like '%'||#{boardTitle}||'%'
+	</select>
+
+</mapper>

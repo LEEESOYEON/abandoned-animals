@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ani.dao.IF_likeDao">
+
+	<!-- 관심 등록하기 -->
+	<insert id="insert" >
+	 	insert into likeT values
+	 	(likeT_no_seq.nextval,#{animal_num},#{animal_name},#{animal_breed},#{animal_sex},#{animal_age},#{member_email},#{photo_url})
+	</insert>
+	
+	<!-- 관심 등록 리스트 -->
+	<select id="selectAll" resultType = "com.ani.vo.LikeVO">
+		select * from likeT where member_email = #{member_email}
+	</select>
+	
+	<!-- 관심 등록 중복 방지 -->
+	<select id="selectCnt" resultType= "int">
+	select count(*) from likeT where animal_num = #{animal_num} and member_email =#{member_email}
+	</select>
+	
+	<!-- 관심 등록 취소 -->
+	<delete id="deleteLike">
+		delete from likeT where like_no = #{likeNo}
+	</delete>
+	
+</mapper>

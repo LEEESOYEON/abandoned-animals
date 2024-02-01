@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "com.ani.dao.IF_adoptAnimalDao">
+
+	<!-- insert 입양신청서 adopt_animal_applycation -->
+	<insert id="insertAdoptAnimal">
+		insert into adopt_animal_applycation values
+		(apply_no_seq.nextval,#{animal_num},#{animal_name},#{animal_breed},#{animal_sex},#{animal_age},#{animal_img},default,
+		#{member_nickname},#{member_name},#{member_email},#{member_zipcode},#{member_address},#{member_address_info},#{member_comment}) 
+	</insert>
+
+	<!-- selectAll 회원의 입양신청서 -->
+	<select id="selectAdoptAnimal" parameterType="String" resultType="com.ani.vo.AdoptAnimalApplicationVO">
+		select * from adopt_animal_applycation where member_email = #{memberEmail}
+	</select>
+	
+	<!-- selectCount 회원의 입양신청서 제출여부 확인 -->
+	<select id="selectAdoptChk" resultType="Integer">
+		select count(*) from adopt_animal_applycation where member_nickname = #{memberNick}
+	</select>
+	
+	<!-- selectCount 동물의 입양신청서 제출여부 확인 -->
+	<select id="selectAnimalAdoptChk" resultType="Integer">
+		select count(*) from adopt_animal_applycation where animal_num = #{animalNum}
+	</select>
+	
+</mapper>
