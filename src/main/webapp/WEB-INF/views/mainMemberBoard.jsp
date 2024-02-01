@@ -51,7 +51,7 @@
             }
 
             .join h5 {
-                color: brown;
+                color : rgb(66, 123, 1);
             }
 
             .join-box {
