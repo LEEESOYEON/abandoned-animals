@@ -22,13 +22,62 @@
 String 타입으로 전송받은 데이터를 key값을 이용하여 접근하기 용이하게 하기위해 클라이언트 단에서 JSON 형식으로 파싱하는 작업을 했습니다.<br>
 원하는 데이터가 있는 key에 접근하기 위해 JSON 파일을 분석하였고,<br>
 두 개의 API에서 가져온 데이터를 공통되는 값인 '유기동물 번호'를 기준으로 매치시키기 위해 for문을 활용하였습니다.<br>
-<br>
+
+***
+##### 매치된 데이터 관리하기
+```Java
+var photoRows = parsedPhotoData.TbAdpWaitAnimalPhotoView.row; //이미지 API key find
+var infoRows = parsedInfoData.TbAdpWaitAnimalView.row; //정보 API key find
+```
+(1) 배열에 저장하기<br>
+```Java
+var arrList = [];
+for(var i=0; i<rows2.length; i++){
+    var animalNo2 = rows2[i].ANIMAL_NO;
+    let imageArr = [];
+    for(var j=0; j<rows.length-1; j++){
+        var animalNo = rows[j].ANIMAL_NO;
+        if(animalNo2 == animalNo){
+            imageArr.push(rows[j].PHOTO_URL);
+            if(animalNo2 != rows[j+1].ANIMAL_NO){ //다음번호랑 같지 않을 경우
+                var name = rows2[i].NM;
+                var date = rows2[i].ENTRNC_DATE;
+                var spcs = rows2[i].SPCS;
+                var intro = rows2[i].INTRCN_CN;
+                var intro_com = rows2[i].TMPR_PRTC_CN;
+    
+                var arr = [animalNo,name,date,intro,intro_com,imageArr];
+                arrList.push(arr);
+            }
+        }
+    }
+}
+```
+(2) 새로운 key 생성하기
+```Java
+//이미지 API와 정보 API 동물번호를 기준으로 매칭하여 
+//정보 API에 이미지 정보들을 저장하는 key 생성
+for(var i=0; i<infoRows.length; i++){
+    var animalInfoNo = infoRows[i].ANIMAL_NO;
+    let imageArr = [];
+    for(var j=0; j<photoRows.length; j++){
+        var animalPhotoNo = photoRows[j].ANIMAL_NO;
+        if(animalInfoNo == animalPhotoNo){
+            imageArr.push(photoRows[j].PHOTO_URL);
+            //break;
+        }
+    }
+    infoRows[i].PHOTO_LIST = imageArr;
+}
+```
 
 | 매치된 데이터 관리 | 장점 | 단점 |
 |---------|-----|-----|
 | 배열에 저장하기 | 필요한 데이터가 저장된 배열에만 접근하여 소요 시간이 비교적 적어 데이터 관리 수월 | 데이터 전송이 복잡 |
 | 새로운 key 생성하기 | JSON형태로 데이터 전송이 간편하여 데이터 접근 용이 | 필요한 데이터에 접근 시 배열안에 배열에 접근하여 소요 시간 ↑ |
-<br>
+
+***
+
 두 가지 로직을 비교하여 유기동물 정보 데이터가 있는 API에 새로운 key를 생성하여 사진 데이터를 배열로 저장했습니다.<br>
  
  <br>
