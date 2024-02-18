@@ -75,7 +75,11 @@ for(var i=0; i<infoRows.length; i++){
 다른 접근 방식을 고려하던 중, 새로운 key를 생성하여 기존의 API 데이터 구조를 변경하는 방법을 발견했습니다.<br>
 이 방법을 적용하니 로직이 간단해졌습니다.<br>
 기존의 API에서 제공하는 key - value 구조를 활용하여 데이터의 접근성이 좋아졌습니다.<br>
-따라서, 새로운 key를 생성하는 두번째 방안을 선택하여 데이터를 관리하였습니다.
+따라서, 새로운 key를 생성하는 두번째 방안을 선택하여 데이터를 관리하였습니다.<br>
+
+<div align="center">
+    <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/f03fedae-84e0-412b-a12d-30539a7304d5" width="400" height="200">
+</div>
 
 ***
  
@@ -115,9 +119,17 @@ for(var i=0; i<infoRows.length; i++){
 결과적으로 일정 개수의 게시물을 보여주고 '더보기'버튼을 클릭할 때마다 추가적인 게시물을 불러오는 방식을 고안해내어 적용했습니다.<br>
 이를 통해 화면이 한 번에 많은 양의 데이터로 인해 넘치는 것을 방지하면서 또 다른 경험을 향상시킬 수 있었습니다.<br>
 
+<div align="center">
+     <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/85545378-babb-422e-8752-2edef568f2f3" width="250" height="150"/>
+</div>
+
 - _*입양 현황 정보*_<br>
 '유기동물 상세보기' 페이지에서 입양 중복 신청을 방지하기 위해 서버와의 비동기 통신을 활용했습니다.<br>
 클라이언트가 해당 동물에 대한 상세 정보를 요청하면, 서버에 AJAX 요청을 보내 해당 동물에 대한 입양 신청 진행 여부를 확인합니다.<br>
 이를 통해 데이터베이스로부터 데이터를 받아와 클라이언트에서 동적으로 화면을 구성합니다.<br>
-받아온 데이터가 있을 경우 이미 입양 신청이 진행 중이기 때문에 입양 신청에 대한 현황을 동적으로 표시하고, 입양 신청이 불가하도록 하여 중복을 방지할 수 있습니다.
+받아온 데이터가 있을 경우 이미 입양 신청이 진행 중이기 때문에 입양 신청에 대한 현황을 동적으로 표시하고, 입양 신청이 불가하도록 하여 중복을 방지할 수 있습니다.<br>
+
+<div align="center">
+     <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/18391941-ae4b-4293-9d2d-b1cdaa671a48" width="250" height="150"/>
+</div>
 
