@@ -1,8 +1,24 @@
 # '유기동물 입양 관리 웹 서비스' 프로젝트
+
+<div align="center">
+    <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/8f616246-47c0-487e-9da5-ed41068e9b8b" width="100px" height="100px">
+</div>
+
 ### <주제> 
-**유기동물 입양 웹 서비스 "야옹아 멍멍해봐"**<br>
+**유기동물 입양 웹 서비스 "야옹아 멍멍해봐"**
+
 ### <프로젝트 목적> 
 **MVC2패턴을 활용한 웹 개발 경험**<br>
+
+<span style="font-size=50%">
+- SQL문법을 활용한 데이터베이스 관리 및 조작 능력 향상<br>
+- Spring Framework와 MVC2 패턴을 적용하여 웹 개발 경험과 기술 향상<br>
+- 동기 및 비동기 통신을 활용한 네트워크 프로그래밍 이해도 향상 및 경험<br>
+- Open API 활용 및 API 사용 경험 및 숙련도 향상<br>
+</span>
+
+
+
 ### <개발 일정> 
 **2023.12.29 ~ 2024.01.19 (21일)**<br>
 ### <개발 인원> 
@@ -12,6 +28,30 @@
 반려동물 가정 수의 비율이 증가하는 만큼 유실유기동물의 비율 역시 증가하고 있습니다.<br>
 따라서, 유기동물 입양에 대한 인식이 앞서는 만큼 반려동물에 대한 입양을 고려하는 사람들에게 유기동물 공공데이터를 이용하여 다양한 정보를 제공하고자 합니다.<br>
 사용자들에게 보다 친근한 접근이 가능하게 하기 위해 부가적인 서비스를 제공하는 웹을 개발하게 되었습니다.<br>
+
+<div align="center">
+    <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/521fd63c-db2a-43f9-ba1c-7fb9e841feff" width="80%" height="100%">
+</div>
+
+- ### __*개발환경*__<br>
+<div align="center">
+   <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/ac9fe239-f950-488e-883a-f1eb9ab76b17" width="80%" height="100%">
+</div>
+
+- ### __*개발구성도*__<br>
+<div align="center">
+    <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/cb7b1571-d03d-407c-8db7-ad05f41cc80f" width="80%" height="100%">
+</div>
+
+- ### __*메뉴구조도*__<br>
+<div align="center">
+    <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/22fb1a15-1c11-478b-8e5a-d5641d183db6" width="80%" height="100%">
+</div>
+
+- ### __*DB 설계*__<br>
+<div align="center">
+    <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/4db805f2-138c-4415-acf2-c2d8e5b10c1f" width="80%" height="100%">
+</div>
 
 - ### __*활용기술*__<br>
 
@@ -24,7 +64,7 @@ String 타입으로 전송받은 데이터를 key값을 이용하여 접근하�
 두 개의 API에서 가져온 데이터를 공통되는 값인 '유기동물 번호'를 기준으로 매치시키기 위해 for문을 활용하였습니다.<br>
 
 ***
-##### 매치된 데이터 관리하기
+##### * 매치된 데이터 관리하기
 매치된 데이터를 관리하기 위한 방법을 고안하는 과정이 있었습니다.
 ```Java
 var photoRows = parsedPhotoData.TbAdpWaitAnimalPhotoView.row; //이미지 API key find
