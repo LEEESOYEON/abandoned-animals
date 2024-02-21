@@ -173,3 +173,9 @@ for(var i=0; i<infoRows.length; i++){
      <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/18391941-ae4b-4293-9d2d-b1cdaa671a48" width="250" height="150"/>
 </div>
 
+- ### __*기능 명세서*__<br>
+<div align="center">
+    <img src="https://github.com/LEEESOYEON/abandoned-animals/assets/150236010/78d3fad4-0fc5-4c28-b7f8-40af32110202" width="80%" height="100%">
+</div>
+
+  
