@@ -66,7 +66,7 @@ String 타입으로 전송받은 데이터를 key값을 이용하여 접근하�
 ***
 ##### * 매치된 데이터 관리하기
 매치된 데이터를 관리하기 위한 방법을 고안하는 과정이 있었습니다.
-```Java
+```JavaScript
 var photoRows = parsedPhotoData.TbAdpWaitAnimalPhotoView.row; //이미지 API key find
 var infoRows = parsedInfoData.TbAdpWaitAnimalView.row; //정보 API key find
 ```
